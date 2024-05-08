@@ -12,5 +12,6 @@ public class EventDTO {
     private String location;
     private LocalDateTime time;
     private String additionalInfo;
-    private List<ParticipantDTO> participants;
+    private List<IndividualDTO> individuals;
+    private List<CompanyDTO> companies;
 }

@@ -21,12 +21,15 @@ public class Event {
     private String location;
 
     @Column(name = "time", nullable = false)
-    private LocalDateTime time;  // Using LocalDateTime for precise date and time representation
+    private LocalDateTime time;
 
-    @Column(name = "additional_info", length = 1000)  // Optional: Specify column definitions for clarity
+    @Column(name = "additional_info", length = 1000)
     private String additionalInfo;
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Participant> participants;
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Individual> individuals;
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Company> companies;
 }
 

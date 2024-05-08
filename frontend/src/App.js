@@ -4,6 +4,7 @@ import HomePage from './components/HomePage';
 import EventForm from './components/EventForm';
 import ParticipantList from './components/ParticipantList';
 import ParticipantForm from './components/ParticipantForm';
+import ParticipantDetails from './components/ParticipantDetails'
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Route path="/create-event" element={<EventForm />} />
                 <Route path="/events/:eventId/participants" element={<ParticipantList />} />
                 <Route path="/events/:eventId/add-participant" element={<ParticipantForm />} />
+                <Route path="/participants/:participantId" element={<ParticipantDetails />} />
             </Routes>
         </Router>
     );
