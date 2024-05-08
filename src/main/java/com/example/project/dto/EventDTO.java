@@ -1,13 +1,16 @@
 package com.example.project.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Data
 public class EventDTO {
     private Long id;
     private String name;
-    private java.util.Date date;
     private String location;
+    private LocalDateTime time;
+    private String additionalInfo;
+    private List<ParticipantDTO> participants;
 }

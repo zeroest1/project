@@ -3,12 +3,15 @@ package com.example.project.mapper;
 import com.example.project.dto.ParticipantDTO;
 import com.example.project.entity.Participant;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.Mapping;
 
-@Mapper
+import java.util.List;
+
+@Mapper(componentModel = "spring")
 public interface ParticipantMapper {
-    ParticipantMapper INSTANCE = Mappers.getMapper(ParticipantMapper.class);
 
-    ParticipantDTO participantToParticipantDTO(Participant participant);
-    Participant participantDTOToParticipant(ParticipantDTO participantDTO);
+    ParticipantDTO participantToParticipantDto(Participant participant);
+    @Mapping(target = "event", ignore = true)
+    Participant participantDtoToParticipant(ParticipantDTO participantDto);
+    List<ParticipantDTO> participantListToParticipantDtoList(List<Participant> participantList);
 }

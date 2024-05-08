@@ -5,79 +5,38 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="1" author="Dmitri Kuznetsov">
+    <changeSet id="20240508-1" author="your_username">
         <createTable tableName="events">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="VARCHAR(255)">
-                <constraints nullable="false" />
+            <column name="name" type="varchar(255)"/>
+            <column name="location" type="varchar(255)"/>
+            <column name="time" type="timestamp">
+                <constraints nullable="false"/>
             </column>
-            <column name="date" type="TIMESTAMP">
-                <constraints nullable="false" />
-            </column>
-            <column name="location" type="VARCHAR(255)" />
-            <column name="details" type="VARCHAR(1000)" />
+            <column name="additional_info" type="varchar(1000)"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="2" author="Dmitri Kuznetsov">
+    <!-- ChangeSet for creating the participants table -->
+    <changeSet id="20240508-2" author="your_username">
         <createTable tableName="participants">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="type" type="VARCHAR(50)" />
-            <column name="payment_method" type="VARCHAR(255)" />
-            <column name="additional_info" type="VARCHAR(1500)" />
-        </createTable>
-    </changeSet>
-
-    <changeSet id="3" author="Dmitri Kuznetsov">
-        <createTable tableName="individuals">
-            <column name="participant_id" type="BIGINT">
-                <constraints primaryKey="true" nullable="false" referencedTableName="participants" referencedColumnNames="id" foreignKeyName="fk_individuals_participants"/>
-            </column>
-            <column name="first_name" type="VARCHAR(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="last_name" type="VARCHAR(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="personal_code" type="VARCHAR(255)">
-                <constraints nullable="false" />
+            <column name="first_name" type="varchar(255)"/>
+            <column name="last_name" type="varchar(255)"/>
+            <column name="company_legal_name" type="varchar(255)"/>
+            <column name="registration_code" type="varchar(255)"/>
+            <column name="participant_count" type="int"/>
+            <column name="payment_method" type="varchar(255)"/>
+            <column name="additional_info" type="varchar(1500)"/>
+            <column name="event_id" type="bigint">
+                <constraints nullable="true" referencedTableName="events" referencedColumnNames="id" foreignKeyName="fk_participants_events"/>
             </column>
         </createTable>
     </changeSet>
 
-    <changeSet id="4" author="Dmitri Kuznetsov">
-        <createTable tableName="companies">
-            <column name="participant_id" type="BIGINT">
-                <constraints primaryKey="true" nullable="false" referencedTableName="participants" referencedColumnNames="id" foreignKeyName="fk_companies_participants"/>
-            </column>
-            <column name="legal_name" type="VARCHAR(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="registration_code" type="VARCHAR(255)">
-                <constraints nullable="false" />
-            </column>
-            <column name="number_of_attendees" type="INTEGER" />
-        </createTable>
-    </changeSet>
 
-    <changeSet id="5" author="Dmitri Kuznetsov">
-        <createTable tableName="event_participants">
-            <column name="event_id" type="BIGINT">
-                <constraints nullable="false" />
-            </column>
-            <column name="participant_id" type="BIGINT">
-                <constraints nullable="false" />
-            </column>
-        </createTable>
-        <addForeignKeyConstraint constraintName="fk_event_participants_events"
-                                 baseTableName="event_participants" baseColumnNames="event_id"
-                                 referencedTableName="events" referencedColumnNames="id"/>
-        <addForeignKeyConstraint constraintName="fk_event_participants_participants"
-                                 baseTableName="event_participants" baseColumnNames="participant_id"
-                                 referencedTableName="participants" referencedColumnNames="id"/>
-    </changeSet>
 </databaseChangeLog>

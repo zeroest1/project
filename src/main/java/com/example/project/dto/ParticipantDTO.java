@@ -1,13 +1,15 @@
 package com.example.project.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class ParticipantDTO {
     private Long id;
-    private String name;
-    private String identifier;
-    private String type;
+    private String firstName;
+    private String lastName;
+    private String companyLegalName;
+    private String registrationCode;
+    private Integer participantCount;
+    private String paymentMethod;
+    private String additionalInfo;
 }
