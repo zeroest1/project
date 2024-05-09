@@ -19,6 +19,10 @@ public class EventController {
     public List<EventDTO> getAllEvents() {
         return eventService.getAllEvents();
     }
+    @GetMapping("/events/{id}")
+    public EventDTO getEvent(@PathVariable Long id) {
+        return eventService.getEvent(id);
+    }
 
     @PostMapping("/events")
     public void createEvent(@RequestBody EventDTO event) {

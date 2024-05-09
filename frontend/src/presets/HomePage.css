@@ -1,0 +1,25 @@
+.content-container {
+    display: flex;
+    align-items: center;
+    background-color: #0056b3;
+    color: white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.text-section {
+    padding: 20px;
+    flex: 1;
+}
+
+.image-section {
+    flex-shrink: 0;
+    overflow: hidden;
+    width: 50%;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+}

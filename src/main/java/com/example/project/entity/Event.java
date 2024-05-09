@@ -26,6 +26,9 @@ public class Event {
     @Column(name = "additional_info", length = 1000)
     private String additionalInfo;
 
+    @Column(name = "participant_count")
+    private int participantCount = 0;
+
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Individual> individuals;
 

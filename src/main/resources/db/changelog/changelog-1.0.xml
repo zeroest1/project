@@ -62,4 +62,10 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="20240508-4" author="Dmitri Kuznetsov">
+        <addColumn tableName="events">
+            <column name="participant_count" type="integer" defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

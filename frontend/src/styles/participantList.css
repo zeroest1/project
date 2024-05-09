@@ -1,0 +1,40 @@
+.participant-list-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.participants-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.actions-part button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actions-part button:hover {
+    background-color: #0056b3;
+}
+
+Link {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #0056b3;
+    font-weight: bold;
+}
+
+Link:hover {
+    text-decoration: underline;
+}

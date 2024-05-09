@@ -14,7 +14,7 @@ function App() {
                 <Route path="/create-event" element={<EventForm />} />
                 <Route path="/events/:eventId/participants" element={<ParticipantList />} />
                 <Route path="/events/:eventId/add-participant" element={<ParticipantForm />} />
-                <Route path="/participants/:participantId" element={<ParticipantDetails />} />
+                <Route path="/participants/:type/:id" element={<ParticipantDetails />} />
             </Routes>
         </Router>
     );

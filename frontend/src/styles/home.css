@@ -1,0 +1,70 @@
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.events-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.events-section {
+    background-color: #0056b3;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.events-list {
+    list-style: none;
+    padding: 0;
+}
+
+.event-item:last-child {
+    border-bottom: none;
+}
+
+.view-participants, .delete-button {
+    text-decoration: none;
+    color: inherit;
+    background-color: #f44336;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.view-participants {
+    background-color: #fff;
+    color: #0056b3;
+    border: 1px solid #fff;
+}
+
+.delete-button {
+    color: white;
+}
+
+.event-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc; /* Border between items */
+    padding: 10px;
+}
+
+.event-info {
+    flex-grow: 1;
+}
+
+.event-name, .event-date, .participants-count {
+    margin-right: 10px;
+}
+
+.event-actions {
+    display: flex;
+    align-items: center;
+}

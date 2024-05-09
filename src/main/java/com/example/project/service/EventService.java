@@ -15,6 +15,7 @@ public class EventService {
     private final EventMapper eventMapper;
     private final EventRepository eventRepository;
 
+
     public List<EventDTO> getAllEvents() {
         List<Event> events = eventRepository.findAll();
         return eventMapper.toDtoList(events);
@@ -26,5 +27,21 @@ public class EventService {
 
     public void deleteEvent(Long id) {
         eventRepository.deleteById(id);
+    }
+
+    public void increaseParticipantCount(Long id, int count) {
+        Event event = eventRepository.findById(id).get();
+        event.setParticipantCount(event.getParticipantCount() + count);
+        eventRepository.save(event);
+    }
+    public void decreaseParticipantCount(Long id, int count) {
+        Event event = eventRepository.findById(id).get();
+        event.setParticipantCount(event.getParticipantCount() - count);
+        eventRepository.save(event);
+    }
+
+    public EventDTO getEvent(Long id) {
+        Event event = eventRepository.findById(id).get();
+        return eventMapper.eventToEventDto(event);
     }
 }

@@ -21,18 +21,21 @@ public class ParticipantService {
     private final IndividualMapper individualMapper;
     private final CompanyMapper companyMapper;
     private final EventRepository eventRepository;
+    private final EventService eventService;
 
 
     public void saveIndividual(Long id, IndividualDTO participant) {
         Individual individual = individualMapper.individualDTOToIndividual(participant);
         individual.setEvent(eventRepository.findById(id).get());
         individualRepository.save(individual);
+        eventService.increaseParticipantCount(id, 1);
     }
 
     public void saveCompany(Long id, CompanyDTO participant) {
         Company company = companyMapper.companyDTOToCompany(participant);
         company.setEvent(eventRepository.findById(id).get());
         companyRepository.save(company);
+        eventService.increaseParticipantCount(id, company.getNumberOfParticipants());
     }
 
     public List<IndividualDTO> getAllIndividualsByEvent(Long eventId) {
@@ -65,19 +68,29 @@ public class ParticipantService {
         Company entity = companyRepository.findById(companyId).get();
         entity.setCompanyName(company.getCompanyName());
         entity.setAdditionalInfo(company.getAdditionalInfo());
-        entity.setNumberOfParticipants(company.getNumberOfParticipants());
         entity.setPaymentMethod(company.getPaymentMethod());
         entity.setCompanyRegistrationCode(company.getCompanyRegistrationCode());
+
+        int amount = entity.getNumberOfParticipants();
+        entity.setNumberOfParticipants(company.getNumberOfParticipants());
+        Long eventId = entity.getEvent().getId();
+        companyRepository.save(entity);
+        eventService.increaseParticipantCount(eventId, entity.getNumberOfParticipants() - amount);
     }
 
     public void deleteIndividual(Long individualId) {
         Individual individual = individualRepository.findById(individualId).get();
+        Long eventId = individual.getEvent().getId();
         individual.setEvent(null);
         individualRepository.save(individual);
+        eventService.decreaseParticipantCount(eventId, 1);
     }
 
     public void deleteCompany(Long companyId) {
         Company company = companyRepository.findById(companyId).get();
-        companyRepository.delete(company);
+        Long eventId = company.getEvent().getId();
+        company.setEvent(null);
+        companyRepository.save(company);
+        eventService.decreaseParticipantCount(eventId, company.getNumberOfParticipants());
     }
 }
