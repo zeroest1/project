@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import NavBar from "../presets/NavBar";
-import Banner from "./Banner";
+import Banner from "../presets/Banner";
 import Footer from "../presets/Footer";
 import '../styles/participantList.css';
 

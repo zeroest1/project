@@ -2,7 +2,7 @@ import React from 'react';
 import './nav.css';
 import Logo from '../assets/logo.svg';
 import Symbol from "../assets/symbol.svg";
-import { NavLink } from 'react-router-dom';  // Import NavLink
+import { NavLink } from 'react-router-dom';
 
 function NavBar() {
     return (

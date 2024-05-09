@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {isValidEstonianPersonalId} from "../utils/validation";
 import NavBar from "../presets/NavBar";
-import Banner from "./Banner";
+import Banner from "../presets/Banner";
 import Footer from "../presets/Footer";
 
 function ParticipantDetails() {

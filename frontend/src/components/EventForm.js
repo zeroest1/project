@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from "../presets/NavBar";
 import '../styles/addEvent.css'
 import Footer from "../presets/Footer";
-import Banner from "./Banner";
+import Banner from "../presets/Banner";
 
 function EventForm() {
     const navigate = useNavigate();

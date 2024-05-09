@@ -52,7 +52,7 @@
 .event-item {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #ccc; /* Border between items */
+    border-bottom: 1px solid #ccc;
     padding: 10px;
 }
 

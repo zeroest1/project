@@ -3,7 +3,7 @@
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9; /* Light background for the entire page */
+    background-color: #f9f9f9;
 }
 
 .form-container {
@@ -54,7 +54,7 @@ input::placeholder, textarea::placeholder {
 }
 
 input[type="submit"] {
-    background-color: #4CAF50; /* Green background for submit button */
+    background-color: #4CAF50;
     color: white;
 }
 
